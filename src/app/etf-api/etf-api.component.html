@@ -1,0 +1,63 @@
+<p>etf-api works!</p>
+<input
+  nz-input
+  [(ngModel)]="searchCode"
+  (ngModelChange)="onSearchCodeChange($event)"
+  placeholder="輸入證券代號"
+/>
+<button (click)="filterButton()">click me to filter</button>
+<button (click)="returnButton()">click me return</button>
+<button (click)="mockUserData()">click me mock</button>
+
+<div>
+  <h1>持有股票統計</h1>
+  <nz-table #userTable [nzData]="userEtfDataList" nzBordered>
+    <thead>
+      <tr>
+        <th *ngFor="let column of userHeaderList">{{ column }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of userTable.data">
+        <td>{{ data.code }}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.startDate }}</td>
+        <td>{{ data.endDate }}</td>
+        <td>{{ data.amountOfStock }}</td>
+        <td>
+          {{
+            data.amountOfStock *
+              getPerBenefitBetweenStartTimeAndEndTime(
+                data.code,
+                data.startDate,
+                data.endDate ?? now
+              )
+          }}
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
+
+<div>
+  <h1>{{ title }}</h1>
+  <nz-table #basicTable [nzData]="etfDataList" nzBordered>
+    <thead>
+      <tr>
+        <th *ngFor="let column of rawData.fields">{{ column }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.code }}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.exDividendDate }}</td>
+        <td>{{ data.baseDate }}</td>
+        <td>{{ data.paymentDate }}</td>
+        <td>{{ data.amount || "N/A" }}</td>
+        <td>{{ data.standard }}</td>
+        <td>{{ data.year }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

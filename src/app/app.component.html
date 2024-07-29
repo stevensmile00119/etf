@@ -1,0 +1,49 @@
+<div>
+  <button (click)="startTest()">開始新的計數器</button>
+  <button (click)="callTest()">計數</button>
+  <button (click)="cancelTest()">發生錯誤</button>
+  <button (click)="cancelTest()">完成計數</button>
+  <button (click)="saveList()">測試儲存list</button>
+  <button (click)="showList()">測試展示list</button>
+  <nz-card
+    nzType="primary"
+    style="width: 300px"
+    [nzBordered]="false"
+    nzTitle="目前數字"
+  >
+    {{ temp }}
+  </nz-card>
+  <!-- <text>目前狀態:</text>
+  <text>目前計數:</text>
+  <text>偶數計數:</text> -->
+</div>
+
+<template ngif="startCountSignal"></template>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<router-outlet></router-outlet>
+<app-etf-api></app-etf-api>
+<!-- NG-ZORRO -->
+<!-- <a
+  href="https://github.com/NG-ZORRO/ng-zorro-antd"
+  target="_blank"
+  style="
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  "
+>
+  <img
+    height="300"
+    src="https://img.alicdn.com/tfs/TB1X.qJJgHqK1RjSZFgXXa7JXXa-89-131.svg"
+  />
+</a> -->
