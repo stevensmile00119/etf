@@ -11,6 +11,11 @@
 
 <div>
   <h1>持有股票統計</h1>
+  <p>
+    共計收益: {{ getTotalDividend() + getTotalPriceDiff() | number : "1.0-0" }}
+  </p>
+  <p>價差收益: {{ getTotalPriceDiff() | number : "1.0-0" }}</p>
+  <p>股息收益: {{ getTotalDividend() | number : "1.0-0" }}</p>
   <nz-table #userTable [nzData]="userEtfDataList" nzBordered>
     <thead>
       <tr>
@@ -23,6 +28,19 @@
         <td>{{ data.name }}</td>
         <td>{{ data.startDate }}</td>
         <td>{{ data.endDate }}</td>
+        <td>{{ data.getPrice ?? "No price information." }}</td>
+        <td>
+          {{
+            data.getPrice
+              ? (data.getPrice -
+                  getPerBenefitBetweenStartTimeAndEndTime(
+                    data.code,
+                    data.startDate,
+                    data.endDate ?? now
+                  ) | number : "1.0-2")
+              : "No price information."
+          }}
+        </td>
         <td>{{ data.amountOfStock }}</td>
         <td>
           {{
@@ -31,7 +49,7 @@
                 data.code,
                 data.startDate,
                 data.endDate ?? now
-              )
+              ) | number : "1.0-0"
           }}
         </td>
       </tr>

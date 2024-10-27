@@ -8,6 +8,7 @@ export const mockData: UserEtfData[] = [
     startDate: new Date(2023, 7, 11),
     endDate: undefined,
     amountOfStock: 1000,
+    getPrice: 14.84,
   },
   {
     code: '00907',
@@ -15,6 +16,7 @@ export const mockData: UserEtfData[] = [
     startDate: new Date(2023, 7, 22),
     endDate: undefined,
     amountOfStock: 1000,
+    getPrice: 14.06,
   },
   {
     code: '00907',
@@ -22,6 +24,7 @@ export const mockData: UserEtfData[] = [
     startDate: new Date(2023, 8, 7),
     endDate: undefined,
     amountOfStock: 1000,
+    getPrice: 14.04,
   },
   {
     code: '00907',
@@ -29,6 +32,7 @@ export const mockData: UserEtfData[] = [
     startDate: new Date(2023, 9, 5),
     endDate: undefined,
     amountOfStock: 1000,
+    getPrice: 13.97,
   },
   {
     code: '00907',
@@ -36,6 +40,7 @@ export const mockData: UserEtfData[] = [
     startDate: new Date(2023, 9, 23),
     endDate: undefined,
     amountOfStock: 1000,
+    getPrice: 13.8,
   },
   {
     code: '00907',
@@ -43,6 +48,7 @@ export const mockData: UserEtfData[] = [
     startDate: new Date(2024, 0, 25),
     endDate: undefined,
     amountOfStock: 2000,
+    getPrice: 14.45,
   },
   {
     code: '00907',
@@ -50,5 +56,22 @@ export const mockData: UserEtfData[] = [
     startDate: new Date(2024, 5, 3),
     endDate: undefined,
     amountOfStock: 1000,
+    getPrice: 16.26,
+  },
+  {
+    code: '00907',
+    name: '永豐優息存股',
+    startDate: new Date(2024, 7, 12),
+    endDate: undefined,
+    amountOfStock: 2000,
+    getPrice: 16.1,
+  },
+  {
+    code: '00907',
+    name: '永豐優息存股',
+    startDate: new Date(2024, 8, 9),
+    endDate: undefined,
+    amountOfStock: 2000,
+    getPrice: 15.32,
   },
 ];

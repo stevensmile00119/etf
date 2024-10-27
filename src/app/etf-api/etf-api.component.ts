@@ -19,7 +19,9 @@ export class EtfApiComponent implements OnInit {
 
   userEtfRawDataList: UserEtfData[] = [];
   userEtfDataList: UserEtfData[] = [];
-  userTotalBenefit = 0;
+  userTotalDevidend = 0;
+  userTotalPriceDiff = 0;
+  mockPrice = 15.77;
   searchCode: string = '';
   displayedColumns: string[] = [];
   etfRawDataList: EtfData[] = [];
@@ -30,6 +32,8 @@ export class EtfApiComponent implements OnInit {
     '證券簡稱',
     '證卷購入日',
     '證卷賣出日',
+    '購入價格',
+    '扣除配息之成本價',
     '股數',
     '累計配息',
   ];
@@ -94,8 +98,8 @@ export class EtfApiComponent implements OnInit {
     const filteredData = this.etfRawDataList.filter(
       (data) =>
         data.code === searchCode &&
-        data.baseDate >= startDate &&
-        data.baseDate <= endDate
+        data.exDividendDate >= startDate &&
+        data.exDividendDate <= endDate
     );
     console.log(filteredData);
     if (null === filteredData) {
@@ -148,5 +152,30 @@ export class EtfApiComponent implements OnInit {
     }
 
     return result[0].name;
+  }
+
+  getTotalDividend() {
+    this.userTotalDevidend = 0;
+    this.userEtfDataList.forEach(
+      (it) =>
+        (this.userTotalDevidend +=
+          it.amountOfStock *
+          this.getPerBenefitBetweenStartTimeAndEndTime(
+            it.code,
+            it.startDate,
+            it.endDate ?? this.now
+          ))
+    );
+    return this.userTotalDevidend;
+  }
+
+  getTotalPriceDiff() {
+    this.userTotalPriceDiff = 0;
+    this.userEtfDataList.forEach(
+      (it) =>
+        (this.userTotalPriceDiff +=
+          it.amountOfStock * (it.getPrice ? this.mockPrice - it.getPrice : 0))
+    );
+    return this.userTotalPriceDiff;
   }
 }

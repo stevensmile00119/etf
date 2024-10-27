@@ -22,4 +22,5 @@ export interface UserEtfData {
   startDate: Date;
   endDate?: Date;
   amountOfStock: number;
+  getPrice?: number;
 }
